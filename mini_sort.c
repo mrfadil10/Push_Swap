@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   mini_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 15:13:21 by mfadil            #+#    #+#             */
-/*   Updated: 2023/01/31 23:04:20 by mfadil           ###   ########.fr       */
+/*   Created: 2023/01/30 19:41:48 by mfadil            #+#    #+#             */
+/*   Updated: 2023/01/31 14:15:34 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*stack_bottom(t_stack *stack)
+int	biggest_index(t_stack *stack)
 {
-	while (stack && stack->next != NULL)
-		stack = stack->next;
-	return (stack);
-}
+	int	index;
 
-t_stack	*stack_before_bottom(t_stack *stack)
-{
-	while (stack && stack->next && stack->next->next != NULL)
-		stack = stack->next;
-	return (stack);
-}
-
-int	sizeof_stack(t_stack *stack)
-{
-	int	size;
-
-	size = 0;
+	index = stack->index;
 	while (stack)
 	{
+		if (stack->index > index)
+			index = stack->index;
 		stack = stack->next;
-		size++;
 	}
-	return (size);
+	return (index);
+}
+
+void	mini_sort(t_stack **stack)
+{
+	int	big;
+
+	if (check_sort(*stack))
+		return ;
+	big = biggest_index(*stack);
+	if ((*stack)->index > (*stack)->next->index)
+		swap_a(stack);
+	if ((*stack)->index == big)
+		rotate_a(stack);
+	else if ((*stack)->next->index == big)
+		rev_rotate_a(stack);
 }

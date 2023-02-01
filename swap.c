@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 22:19:09 by mfadil            #+#    #+#             */
-/*   Updated: 2023/01/27 23:29:58 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/01/28 18:58:35 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,13 @@ static void	swap(t_stack *stack)
 
 // swap the first 2 elements of stack a
 // prints "sa" in the standard output
-
 void	swap_a(t_stack **stack_a)
 {
 	swap(*stack_a);
 	ft_putstr("sa\n");
 }
 
-// swap the first 2 elements of stack b
-// prints "sa" in the standard output
+// same for stack b
 
 void	swap_b(t_stack **stack_b)
 {
@@ -46,6 +44,7 @@ void	swap_b(t_stack **stack_b)
 	ft_putstr("sb\n");
 }
 
+// do the operation in both stack a and stack b
 void	do_ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(*stack_a);
