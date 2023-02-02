@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:29:01 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/01 15:58:18 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/02 15:31:52 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 {
 	int				data;
 	int				index;
+	int				position;
 	struct s_stack	*next;
 }	t_stack;
 
