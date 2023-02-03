@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:39:02 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/02 23:41:49 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/03 23:48:00 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,47 @@ int	lowest_index_position(t_stack **stack)
 	return (low_pos);
 }
 
-static int	get_target(t_stack **a, int)
+static int	get_target(t_stack **a, int b_index, int tar_index, int tar_pos)
+{
+	t_stack	*tmp;
+
+	tmp = *a;
+	while (tmp)
+	{
+		if (tmp->index > b_index && tmp->index < tar_index)
+		{
+			tar_pos = tmp->position;
+			tar_index = tmp->index;
+		}
+		tmp = tmp->next;
+	}
+	if (tar_index != INT_MAX)
+		return (tar_pos);
+	while (tmp)
+	{
+		if (tmp->index < b_index)
+		{
+			tar_pos = tmp->position;
+			tar_index = tmp->index;
+		}
+		tmp = tmp->next;
+	}
+	return (tar_pos);
+}
+
+void	ft_target_position(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*tmp;
+	int		tar_position;
+
+	tmp = *stack_b;
+	get_position(stack_a);
+	get_position(stack_b);
+	tar_position = 0;
+	while (tmp)
+	{
+		tar_position = get_target(a, tmp->index, INT_MAX,tar_position);
+		tmp->tar_position = tar_position;
+		tmp = tmp->next;
+	}
+}
