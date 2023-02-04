@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:39:02 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/03 23:48:00 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/03 23:57:36 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_target_position(t_stack **stack_a, t_stack **stack_b)
 	tar_position = 0;
 	while (tmp)
 	{
-		tar_position = get_target(a, tmp->index, INT_MAX,tar_position);
+		tar_position = get_target(stack_a, tmp->index, INT_MAX, tar_position);
 		tmp->tar_position = tar_position;
 		tmp = tmp->next;
 	}
