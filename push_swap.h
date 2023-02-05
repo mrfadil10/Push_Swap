@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:29:01 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/03 22:02:41 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/05 16:35:14 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_stack	*stack_bottom(t_stack *stack);
 int		ft_sign(int c);
 int		ft_isdigit(int c);
 int		strcmp_numbers(const char *s1, const char *s2);
+
 int		check_correct_input(char **av);
 int		check_is_zero(char *av);
 int		check_sort(t_stack *stack);

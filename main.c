@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:15:11 by mfadil            #+#    #+#             */
-/*   Updated: 2023/01/30 19:41:05 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/05 21:08:50 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,42 @@ int	check_sort(t_stack *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
+
+void	error(t_stack **a, t_stack **b)
+{
+	if (a == NULL || *a != NULL)
+		free_stack(a);
+	if (b == NULL || *b != NULL)
+		free_stack(b);
+	write(2, "\033[91mError\n\033[0m", 17);
+	exit (1);
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		size;
+
+	if (argc < 2)
+		return (0);
+	if (!check_correct_input(argv))
+		error(NULL, NULL);
+	stack_b = NULL;
 }
