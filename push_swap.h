@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:29:01 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/05 16:35:14 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/06 23:33:25 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_stack
 	int				index;
 	int				position;
 	int				tar_position;
+	int				cost_a;
+	int				cost_b;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -56,5 +58,10 @@ void	push_to_b(t_stack **stack_a, t_stack **stack_b);
 
 int		sizeof_stack(t_stack *stack);
 void	mini_sort(t_stack **stack);
+
+void	free_stack(t_stack **stack);
+void	error(t_stack **a, t_stack **b);
+t_stack	*new_stack(int data);
+void	add_bottom_of_stack(t_stack **stack, t_stack *new);
 
 #endif

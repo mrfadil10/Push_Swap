@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:15:11 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/05 21:08:50 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/06 23:26:19 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ int	main(int argc, char **argv)
 	if (!check_correct_input(argv))
 		error(NULL, NULL);
 	stack_b = NULL;
+	size = sizeof_stack(stack_a);
 }
