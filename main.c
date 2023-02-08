@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:15:11 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/06 23:26:19 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/08 20:16:12 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ void	error(t_stack **a, t_stack **b)
 	exit (1);
 }
 
+static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
+{
+	if (stack_size == 2 && !check_sort(*stack_a))
+		swap_a(*stack_a);
+	else if (stack_size == 3 && !check_sort(*stack_a))
+		mini_sort(*stack_a);
+	else if (stack_size > 3 && !check_sort(*stack_a))
+	{}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -61,4 +71,7 @@ int	main(int argc, char **argv)
 		error(NULL, NULL);
 	stack_b = NULL;
 	size = sizeof_stack(stack_a);
+	put_index_to_data(stack_a, size);
+	push_swap(&stack_a, &stack_b, size);
+	free_stack()
 }

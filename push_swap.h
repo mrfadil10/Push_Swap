@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:29:01 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/06 23:33:25 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/08 17:47:46 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,8 @@ void	free_stack(t_stack **stack);
 void	error(t_stack **a, t_stack **b);
 t_stack	*new_stack(int data);
 void	add_bottom_of_stack(t_stack **stack, t_stack *new);
+void	put_index_to_data(t_stack *stack, int size);
+void	ft_target_position(t_stack **stack_a, t_stack **stack_b);
+int		lowest_index_position(t_stack **stack);
 
 #endif

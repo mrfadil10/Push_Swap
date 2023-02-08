@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:39:21 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/01 16:01:12 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/08 18:00:39 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,39 @@ static void	save_three(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+static void	shift_stack(t_stack **stack)
+{
+	int	low_pos;
+	int	size;
+
+	size = sizeof_stack(*stack);
+	low_pos = lowest_index_position(stack);
+	if (low_pos > size / 2)
+	{
+		while (low_pos < size)
+		{
+			rev_rotate_a(stack);
+			low_pos++;
+		}
+	}
+	else
+	{
+		while (low_pos > 0)
+		{
+			rotate_a(stack);
+			low_pos--;
+		}
+	}
+}
+
 void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	save_three(*stack_a, stack_b);
 	mini_sort(stack_a);
 	while (*stack_b)
 	{
-		
+		ft_target_position(stack_a, stack_b);
 	}
+	if (!check_sort(*stack_a))
+		shift_stack(stack_a);
 }
