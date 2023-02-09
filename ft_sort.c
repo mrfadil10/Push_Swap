@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:39:21 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/08 18:00:39 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/09 23:46:58 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b)
 	{
 		ft_target_position(stack_a, stack_b);
+		get_cost(stack_a, stack_b);
+		do_shortest_move(stack_a, stack_b);
 	}
 	if (!check_sort(*stack_a))
 		shift_stack(stack_a);

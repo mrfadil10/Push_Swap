@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:29:01 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/08 17:47:46 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/09 23:45:56 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,9 @@ void	add_bottom_of_stack(t_stack **stack, t_stack *new);
 void	put_index_to_data(t_stack *stack, int size);
 void	ft_target_position(t_stack **stack_a, t_stack **stack_b);
 int		lowest_index_position(t_stack **stack);
+void	ft_sort(t_stack **stack_a, t_stack **stack_b);
+void	ft_moves(t_stack **a, t_stack **b, int cost_a, int cost_b);
+void	do_shortest_move(t_stack **stack_a, t_stack **stack_b);
+void	get_cost(t_stack **stack_a, t_stack **stack_b);
 
 #endif
