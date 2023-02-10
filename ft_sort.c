@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:39:21 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/09 23:46:58 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/10 18:11:25 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ static void	save_three(t_stack **stack_a, t_stack **stack_b)
 		else
 			rotate_a(stack_a);
 		i++;
+	}
+	while (size - pushed_b > 3)
+	{
+		push_to_b(stack_a, stack_b);
+		pushed_b++;
 	}
 }
 
@@ -61,7 +66,7 @@ static void	shift_stack(t_stack **stack)
 
 void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	save_three(*stack_a, stack_b);
+	save_three(stack_a, stack_b);
 	mini_sort(stack_a);
 	while (*stack_b)
 	{

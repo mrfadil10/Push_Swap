@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 23:18:16 by mfadil            #+#    #+#             */
-/*   Updated: 2023/01/30 16:56:18 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/10 23:33:50 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_number(char *av)
 	return (1);
 }
 
-static int	check_dup(char *av)
+static int	check_dup(char **av)
 {
 	int	i;
 	int	j;
@@ -35,9 +35,9 @@ static int	check_dup(char *av)
 	while (av[i])
 	{
 		j = 1;
-		while (av[i])
+		while (av[j])
 		{
-			if (j != i && strcmp_numbers(av[i], av[j]))
+			if (j != i && strcmp_numbers(av[i], av[j]) == 0)
 				return (1);
 			j++;
 		}
@@ -78,7 +78,7 @@ int	check_correct_input(char **av)
 	}
 	if (nb_zero > 1)
 		return (0);
-	if (check_dup(av[i]))
+	if (check_dup(av))
 		return (0);
 	return (1);
 }

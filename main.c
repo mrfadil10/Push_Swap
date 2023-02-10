@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:15:11 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/09 23:49:08 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/10 23:31:17 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	error(t_stack **a, t_stack **b)
 		free_stack(a);
 	if (b == NULL || *b != NULL)
 		free_stack(b);
-	write(2, "\033[91mError\n\033[0m", 17);
+	write(2, "Error\n", 7);
 	exit (1);
 }
 

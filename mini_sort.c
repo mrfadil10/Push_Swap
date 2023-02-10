@@ -6,13 +6,13 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:41:48 by mfadil            #+#    #+#             */
-/*   Updated: 2023/01/31 14:15:34 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/10 18:17:21 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	biggest_index(t_stack *stack)
+static int	biggest_index(t_stack *stack)
 {
 	int	index;
 

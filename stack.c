@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:13:21 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/06 22:30:27 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/10 23:41:41 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	sizeof_stack(t_stack *stack)
 	int	size;
 
 	size = 0;
+	if (!stack)
+		return (0);
 	while (stack)
 	{
 		stack = stack->next;

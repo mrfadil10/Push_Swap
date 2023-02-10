@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 23:07:53 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/08 15:18:56 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/10 19:26:35 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 t_stack	*fill_stack_a(int argc, char **argv)
 {
 	t_stack	*stack;
-	int		nbr;
+	long int	nbr;
 	int		i;
 
 	stack = NULL;
 	nbr = 0;
-	i = 0;
+	i = 1;
 	while (i < argc)
 	{
 		nbr = ft_atoi(argv[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			error(&stack, NULL);
 		if (i == 1)
-			stack = new_stack(nbr);
+			stack = new_stack((int)nbr);
 		else
-			add_bottom_of_stack(&stack, new_stack(nbr));
+			add_bottom_of_stack(&stack, new_stack((int)nbr));
 		i++;
 	}
 	return (stack);
@@ -41,7 +41,7 @@ void	put_index_to_data(t_stack *stack, int size)
 	t_stack	*highest;
 	t_stack	*p;
 
-	while (size > 0)
+	while (--size > 0) // miss a decremention
 	{
 		p = stack;
 		data = INT_MIN;
@@ -52,7 +52,7 @@ void	put_index_to_data(t_stack *stack, int size)
 				p->index = 1;
 			if (p->data > data && p->index == 0)
 			{
-				data == p->data;
+				data = p->data;
 				highest = p;
 				p = stack;
 			}

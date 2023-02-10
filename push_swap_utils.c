@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:57 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/06 23:26:05 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/10 22:47:01 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ int	strcmp_numbers(const char *s1, const char *s2)
 	else
 	{
 		if (s2[j] == '+')
-		j++;
+			j++;
 	}
-	while (s1[i] && s2[j] && s1[i] == s2[i])
+	while (s1[i] && s2[j] && s1[i] == s2[j])
 	{
 		i++;
 		j++;

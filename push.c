@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:28:20 by mfadil            #+#    #+#             */
-/*   Updated: 2023/01/28 18:55:51 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/10 16:51:36 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_push(t_stack **src, t_stack **dest)
 //	Prints "pa" in the standard output.
 void	push_to_a(t_stack **stack_a, t_stack **stack_b)
 {
-	push(stack_a, stack_b);
+	ft_push(stack_a, stack_b);
 	ft_putstr("pa\n");
 }
 
@@ -38,6 +38,6 @@ void	push_to_a(t_stack **stack_a, t_stack **stack_b)
 //	- Prints "pa" in the standard output
 void	push_to_b(t_stack **stack_a, t_stack **stack_b)
 {
-	push(stack_a, stack_b);
+	ft_push(stack_a, stack_b);
 	ft_putstr("pb\n");
 }

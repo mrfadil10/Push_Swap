@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:39:02 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/03 23:57:36 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/10 17:48:50 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	get_position(t_stack **stack)
 	t_stack	*tmp;
 	int		i;
 
+	tmp = *stack;
 	i = 0;
 	while (tmp)
 	{
