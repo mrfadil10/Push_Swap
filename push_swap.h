@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:29:01 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/10 16:59:58 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/11 18:05:50 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <limits.h>
 # include <stdio.h>
 # include <stddef.h>
+
+//#define while(cond) while (printf("\n\n__LINE__ = %i, __FILE__ = %s\n\n", __LINE__, __FILE__, usleep(1000)) && cond)
 
 typedef struct s_stack
 {
@@ -71,5 +73,6 @@ void	ft_moves(t_stack **a, t_stack **b, int cost_a, int cost_b);
 void	do_shortest_move(t_stack **stack_a, t_stack **stack_b);
 void	get_cost(t_stack **stack_a, t_stack **stack_b);
 t_stack	*stack_before_bottom(t_stack *stack);
+t_stack	*fill_stack_a(int argc, char **argv);
 
 #endif

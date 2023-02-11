@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:39:02 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/10 17:48:50 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/11 20:24:45 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	lowest_index_position(t_stack **stack)
 	tmp = *stack;
 	low_i = INT_MAX;
 	get_position(stack);
-	low_i = tmp->position;
+	low_pos = tmp->position;
 	while (tmp)
 	{
 		if (tmp->index < low_i)
@@ -67,7 +67,7 @@ static int	get_target(t_stack **a, int b_index, int tar_index, int tar_pos)
 		return (tar_pos);
 	while (tmp)
 	{
-		if (tmp->index < b_index)
+		if (tmp->index < tar_index)
 		{
 			tar_pos = tmp->position;
 			tar_index = tmp->index;

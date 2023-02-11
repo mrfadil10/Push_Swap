@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 23:07:53 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/10 19:26:35 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/11 14:28:38 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_stack	*fill_stack_a(int argc, char **argv)
 {
-	t_stack	*stack;
+	t_stack		*stack;
 	long int	nbr;
-	int		i;
+	int			i;
 
 	stack = NULL;
 	nbr = 0;
@@ -41,7 +41,7 @@ void	put_index_to_data(t_stack *stack, int size)
 	t_stack	*highest;
 	t_stack	*p;
 
-	while (--size > 0) // miss a decremention
+	while (--size > 0)
 	{
 		p = stack;
 		data = INT_MIN;

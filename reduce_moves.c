@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:33:50 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/09 16:36:02 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/11 20:23:50 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	do_shortest_move(t_stack **stack_a, t_stack **stack_b)
 	{
 		if (va_abs(tmp->cost_a) + va_abs(tmp->cost_b) < va_abs(shortest))
 		{
-			shortest = va_abs(tmp->cost_a) + va_abs(tmp->cost_b);
+			shortest = va_abs(tmp->cost_b) + va_abs(tmp->cost_a);
 			cost_a = tmp->cost_a;
 			cost_b = tmp->cost_b;
 		}

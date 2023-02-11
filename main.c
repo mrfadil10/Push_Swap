@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:15:11 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/10 23:31:17 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/11 16:53:29 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,9 @@ int	main(int argc, char **argv)
 	if (!check_correct_input(argv))
 		error(NULL, NULL);
 	stack_b = NULL;
+	stack_a = fill_stack_a(argc, argv);
 	size = sizeof_stack(stack_a);
-	put_index_to_data(stack_a, size);
+	put_index_to_data(stack_a, size + 1);
 	push_swap(&stack_a, &stack_b, size);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
