@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:39:02 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/11 20:24:45 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/12 18:02:08 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static int	get_target(t_stack **a, int b_index, int tar_index, int tar_pos)
 	}
 	if (tar_index != INT_MAX)
 		return (tar_pos);
+	tmp = *a;
 	while (tmp)
 	{
 		if (tmp->index < tar_index)

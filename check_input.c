@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 23:18:16 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/10 23:33:50 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/12 15:27:24 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_number(char *av)
 	int	i;
 
 	i = 0;
-	if (ft_sign(av[i]) && av[i + 1])
+	if (ft_sign(av[i]) && av[i + 1] != '\0')
 		i++;
 	while (av[i] && ft_isdigit(av[i]))
 		i++;
