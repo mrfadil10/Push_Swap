@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:15:11 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/11 16:53:29 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/15 14:44:05 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,11 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void	error(t_stack **a, t_stack **b)
-{
-	if (a == NULL || *a != NULL)
-		free_stack(a);
-	if (b == NULL || *b != NULL)
-		free_stack(b);
-	write(2, "Error\n", 7);
-	exit (1);
-}
-
 static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
 	if (stack_size == 2 && !check_sort(*stack_a))
 		swap_a(stack_a);
-	else if (stack_size == 3 && !check_sort(*stack_a))
+	else if (stack_size == 3)
 		mini_sort(stack_a);
 	else if (stack_size > 3 && !check_sort(*stack_a))
 		ft_sort(stack_a, stack_b);

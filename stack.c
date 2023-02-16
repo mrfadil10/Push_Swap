@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:13:21 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/10 23:41:41 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/02/14 23:28:25 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_stack	*new_stack(int data)
 	new = malloc(sizeof * new);
 	if (!new)
 		return (NULL);
-	new->index = 0;
 	new->data = data;
+	new->index = 0;
 	new->position = -1;
 	new->tar_position = -1;
 	new->cost_a = -1;
@@ -62,6 +62,8 @@ void	add_bottom_of_stack(t_stack **stack, t_stack *new)
 {
 	t_stack	*a;
 
+	if (!new)
+		return ;
 	if (!*stack)
 	{
 		*stack = new;
