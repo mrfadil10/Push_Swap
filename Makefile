@@ -6,30 +6,32 @@
 #    By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 16:38:37 by mfadil            #+#    #+#              #
-#    Updated: 2023/02/16 01:29:51 by mfadil           ###   ########.fr        #
+#    Updated: 2023/03/26 20:55:03 by mfadil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 NAME = push_swap
 #S_PATH = src/
 O_PATH = obj/
 
 SRC =	check_input.c \
-		fill_and_assign.c \
 		ft_moves.c \
 		ft_position.c \
-		ft_sort.c \
 		main.c \
 		mini_sort.c \
 		push_swap_utils.c \
+		push_swap.c \
 		push.c \
 		reduce_moves.c \
 		rev_rotate.c \
 		rotate.c \
+		split_strs.c \
 		stack.c \
-		swap.c
+		swap.c \
+		lib1.c
+
 OBJ		= 	$(SRC:.c=.o)
 SRCS	= $(addprefix $(S_PATH), $(SRC))
 OBJS	= $(addprefix $(O_PATH), $(OBJ))

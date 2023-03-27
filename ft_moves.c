@@ -6,73 +6,73 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:31:47 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/11 18:07:30 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/03/26 02:54:25 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	do_rrr(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
+static void	reverse_all(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
 	while (*cost_a < 0 && *cost_b < 0)
 	{
 		(*cost_a)++;
 		(*cost_b)++;
-		rev_rotate_all(a, b);
+		do_rrr(a, b);
 	}
 }
 
-static void	do_rotate_both(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
+static void	rotate_all(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
 	while (*cost_a > 0 && *cost_b > 0)
 	{
 		(*cost_a)--;
 		(*cost_b)--;
-		rotate_all(a, b);
+		do_rr(a, b);
 	}
 }
 
-static void	do_rotate_a(t_stack **a, int *cost_a)
+static void	rotate_a(t_stack **a, int *cost)
 {
-	while (*cost_a)
+	while (*cost)
 	{
-		if (*cost_a > 0)
+		if (*cost > 0)
 		{
-			rotate_a(a);
-			(*cost_a)--;
+			do_ra(a);
+			(*cost)--;
 		}
-		else if (*cost_a < 0)
+		else if (*cost < 0)
 		{
-			rev_rotate_a(a);
-			(*cost_a)++;
+			do_rra(a);
+			(*cost)++;
 		}
 	}
 }
 
-static void	do_rotate_b(t_stack **b, int *cost_b)
+static void	rotate_b(t_stack **b, int *cost)
 {
-	while (*cost_b)
+	while (*cost)
 	{
-		if (*cost_b > 0)
+		if (*cost > 0)
 		{
-			rotate_b(b);
-			(*cost_b)--;
+			do_rb(b);
+			(*cost)--;
 		}
-		else if (*cost_b < 0)
+		else if (*cost < 0)
 		{
-			rev_rotate_b(b);
-			(*cost_b)++;
+			do_rrb(b);
+			(*cost)++;
 		}
 	}
 }
 
-void	ft_moves(t_stack **a, t_stack **b, int cost_a, int cost_b)
+void	do_best_move(t_stack **a, t_stack **b, int cost_a, int cost_b)
 {
 	if (cost_a < 0 && cost_b < 0)
-		do_rrr(a, b, &cost_a, &cost_b);
+		reverse_all(a, b, &cost_a, &cost_b);
 	else if (cost_a > 0 && cost_b > 0)
-		do_rotate_both(a, b, &cost_a, &cost_b);
-	do_rotate_a(a, &cost_a);
-	do_rotate_b(b, &cost_b);
+		rotate_all(a, b, &cost_a, &cost_b);
+	rotate_a(a, &cost_a);
+	rotate_b(b, &cost_b);
 	push_to_a(a, b);
 }

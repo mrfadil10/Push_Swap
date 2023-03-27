@@ -6,13 +6,13 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:33:50 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/15 15:38:15 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/03/26 02:54:43 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_cost(t_stack **stack_a, t_stack **stack_b)
+void	cost(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
@@ -21,8 +21,8 @@ void	get_cost(t_stack **stack_a, t_stack **stack_b)
 
 	tmp_a = *stack_a;
 	tmp_b = *stack_b;
-	size_a = sizeof_stack(tmp_a);
-	size_b = sizeof_stack(tmp_b);
+	size_a = get_stack_size(tmp_a);
+	size_b = get_stack_size(tmp_b);
 	while (tmp_b)
 	{
 		tmp_b->cost_b = tmp_b->position;
@@ -35,31 +35,24 @@ void	get_cost(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-//int	va_abs(int nbr)
-//{
-//	if (nbr < 0)
-//		return (nbr * (-1));
-//	return (nbr);
-//}
-
-void	do_shortest_move(t_stack **stack_a, t_stack **stack_b)
+void	reduce_moves(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*tmp;
-	int		shortest;
-	int		cost_a;
-	int		cost_b;
+	t_stack		*tmp;
+	int			cheapest;
+	int			cost_a;
+	int			cost_b;
 
 	tmp = *stack_b;
-	shortest = INT_MAX;
+	cheapest = INT_MAX;
 	while (tmp)
 	{
-		if (va_abs(tmp->cost_a) + va_abs(tmp->cost_b) < va_abs(shortest))
+		if (abs(tmp->cost_a) + abs(tmp->cost_b) < cheapest)
 		{
-			shortest = va_abs(tmp->cost_b) + va_abs(tmp->cost_a);
+			cheapest = abs(tmp->cost_a) + abs(tmp->cost_b);
 			cost_a = tmp->cost_a;
 			cost_b = tmp->cost_b;
 		}
 		tmp = tmp->next;
 	}
-	ft_moves(stack_a, stack_b, cost_a, cost_b);
+	do_best_move(stack_a, stack_b, cost_a, cost_b);
 }

@@ -6,60 +6,74 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 23:07:53 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/07 23:51:54 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/03/26 01:32:39 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*fill_stack_a(int argc, char **argv)
+static void	push_init(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*stack;
-	int		nbr;
-	int		i;
+	int	stack_size;
+	int	pushes;
+	int	i;
 
-	stack = NULL;
-	nbr = 0;
+	stack_size = get_stack_size(*stack_a);
+	pushes = 0;
 	i = 0;
-	while (i < argc)
+	while (stack_size > 6 && i < stack_size && pushes < stack_size / 2)
 	{
-		nbr = ft_atoi(argv[i]);
-		if (nbr > INT_MAX || nbr < INT_MIN)
-			error(&stack, NULL);
-		if (i == 1)
-			stack = new_stack(nbr);
+		if ((*stack_a)->index <= stack_size / 2)
+		{
+			do_pb(stack_a, stack_b);
+			pushes++;
+		}
 		else
-			add_bottom_of_stack(&stack, new_stack(nbr));
+			do_ra(stack_a);
 		i++;
 	}
-	return (stack);
+	while (stack_size - pushes > 3)
+	{
+		do_pb(stack_a, stack_b);
+		pushes++;
+	}
 }
 
-void	put_index_to_data(t_stack *stack, int size)
+static void	sort_stack(t_stack **stack_a)
 {
-	int		data;
-	t_stack	*highest;
-	t_stack	*p;
+	int	lowest_p;
+	int	stack_size;
 
-	while (size > 0)
+	stack_size = get_stack_size(*stack_a);
+	lowest_p = position_lowest_index(stack_a);
+	if (lowest_p > stack_size / 2)
 	{
-		p = stack;
-		data = INT_MIN;
-		highest = NULL;
-		while (p)
+		while (lowest_p < stack_size)
 		{
-			if (p->data == INT_MIN && p->index == 0)
-				p->index = 1;
-			if (p->data > data && p->index == 0)
-			{
-				data == p->data;
-				highest = p;
-				p = stack;
-			}
-			else
-				p = p->next;
+			do_rra(stack_a);
+			lowest_p++;
 		}
-		if (highest != NULL)
-			highest->index = size;
 	}
+	else
+	{
+		while (lowest_p > 0)
+		{
+			do_ra(stack_a);
+			lowest_p--;
+		}
+	}
+}
+
+void	sort(t_stack **stack_a, t_stack **stack_b)
+{
+	push_init(stack_a, stack_b);
+	sort_three(stack_a);
+	while (*stack_b)
+	{
+		get_target_position(stack_a, stack_b);
+		cost(stack_a, stack_b);
+		reduce_moves(stack_a, stack_b);
+	}
+	if (!is_sorted(*stack_a))
+		sort_stack(stack_a);
 }

@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:57 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/15 14:46:15 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/03/25 17:56:57 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	ft_putstr(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
+}
+
+int	ft_isdigit(char c)
+{
+	return (c >= '0' && c <= '9');
 }
 
 long int	ft_atoi(const char *str)
@@ -51,18 +56,6 @@ long int	ft_atoi(const char *str)
 	return (result * negatif);
 }
 
-// utils for "check input"
-
-int	ft_isdigit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int	ft_sign(char c)
-{
-	return (c == '+' || c == '-');
-}
-
 //int	strcmp_numbers(const char *s1, const char *s2)
 //{
 //	int	i;
@@ -88,7 +81,7 @@ int	ft_sign(char c)
 //	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
 //}
 
-void	error(t_stack **a, t_stack **b)
+void	error_exit(t_stack **a, t_stack **b)
 {
 	if (a == NULL || *a != NULL)
 		free_stack(a);

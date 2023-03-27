@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:39:02 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/14 19:21:31 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/03/26 04:33:03 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	get_position(t_stack **stack)
 	t_stack	*tmp;
 	int		i;
 
-	tmp = *stack;
 	i = 0;
+	tmp = *stack;
 	while (tmp)
 	{
 		tmp->position = i;
@@ -27,70 +27,70 @@ static void	get_position(t_stack **stack)
 	}
 }
 
-int	lowest_index_position(t_stack **stack)
+int	position_lowest_index(t_stack **stack)
 {
 	t_stack	*tmp;
-	int		low_i;
-	int		low_pos;
+	int		lowest_i;
+	int		lowest_p;
 
 	tmp = *stack;
-	low_i = INT_MAX;
+	lowest_i = INT_MAX;
 	get_position(stack);
-	low_pos = tmp->position;
+	lowest_p = tmp->position;
 	while (tmp)
 	{
-		if (tmp->index < low_i)
+		if (tmp->index < lowest_i)
 		{
-			low_i = tmp->index;
-			low_pos = tmp->position;
+			lowest_i = tmp->index;
+			lowest_p = tmp->position;
 		}
 		tmp = tmp->next;
 	}
-	return (low_pos);
+	return (lowest_p);
 }
 
-static int	get_target(t_stack **a, int b_index, int tar_index, int tar_pos)
+static int	get_target(t_stack **stack_a, int index_b, int target_i, int target)
 {
 	t_stack	*tmp;
 
-	tmp = *a;
+	tmp = *stack_a;
 	while (tmp)
 	{
-		if (tmp->index > b_index && tmp->index < tar_index)
+		if (tmp->index > index_b && tmp->index < target_i)
 		{
-			tar_index = tmp->index;
-			tar_pos = tmp->position;
+			target_i = tmp->index;
+			target = tmp->position;
 		}
 		tmp = tmp->next;
 	}
-	if (tar_index != INT_MAX)
-		return (tar_pos);
-	tmp = *a;
+	if (target_i != INT_MAX)
+		return (target);
+	tmp = *stack_a;
 	while (tmp)
 	{
-		if (tmp->index < tar_index)
+		if (tmp->index < target_i)
 		{
-			tar_index = tmp->index;
-			tar_pos = tmp->position;
+			target_i = tmp->index;
+			target = tmp->position;
 		}
 		tmp = tmp->next;
 	}
-	return (tar_pos);
+	return (target);
 }
 
-void	ft_target_position(t_stack **stack_a, t_stack **stack_b)
+void	get_target_position(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
-	int		tar_position;
+	int		target;
 
 	tmp = *stack_b;
 	get_position(stack_a);
 	get_position(stack_b);
-	tar_position = 0;
+	target = 0;
 	while (tmp)
 	{
-		tar_position = get_target(stack_a, tmp->index, INT_MAX, tar_position);
-		tmp->tar_position = tar_position;
+		target = get_target(stack_a, tmp->index, INT_MAX, target);
+		tmp->tar_position = target;
 		tmp = tmp->next;
 	}
 }

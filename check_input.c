@@ -6,118 +6,110 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 23:18:16 by mfadil            #+#    #+#             */
-/*   Updated: 2023/02/15 14:46:30 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/03/26 21:35:00 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//static int	check_number(char *av)
-//{
-//	int	i;
-
-//	i = 0;
-//	if (ft_sign(av[i]) && av[i + 1] != '\0')
-//		i++;
-//	while (av[i] && ft_isdigit(av[i]))
-//		i++;
-//	if (av[i] != '\0' && !ft_isdigit(av[i]))
-//		return (0);
-//	return (1);
-//}
-
-int	strcmp_numbers(const char *s1, const char *s2)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = i;
-	if (s1[i] == '+')
-	{
-		if (s2[j] != '+')
-			i++;
-	}
-	else
-	{
-		if (s2[j] == '+')
-			j++;
-	}
-	while (s1[i] != '\0' && s2[j] != '\0' && s1[i] == s2[j])
-	{
-		i++;
-		j++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
-}
-
-static int	check_number(char *av)
+long	check_input(char *av)
 {
 	int	i;
 
 	i = 0;
-	if (ft_sign(av[i]) && av[i + 1] != '\0')
+	if ((av[i] == '-' || av[i] == '+') && (ft_strlen(av) > 1))
 		i++;
-	while (av[i] && ft_isdigit(av[i]))
+	while (av[i])
+	{
+		if (av[i] < '0' || av[i] > '9')
+			return (0);
 		i++;
-	if (av[i] != '\0' && !ft_isdigit(av[i]))
-		return (0);
+	}
 	return (1);
 }
 
-static int	check_dup(char **av)
+int	check_dup(t_stack *column)
 {
-	int	i;
-	int	j;
+	t_stack	*tmp;
+	t_stack	*tmp2;
 
-	i = 1;
-	while (av[i])
+	tmp = column;
+	while (tmp)
 	{
-		j = 1;
-		while (av[j])
+		tmp2 = tmp->next;
+		while (tmp2)
 		{
-			if (j != i && strcmp_numbers(av[i], av[j]) == 0)
+			if (tmp->data == tmp2->data)
 				return (1);
-			j++;
+			tmp2 = tmp2->next;
 		}
-		i++;
+		tmp = tmp->next;
 	}
 	return (0);
 }
 
-// check the argument is zero (+0, -0, -00000, +0000,...)
-static int	check_is_zero(char *av)
+void	get_index(t_stack *stack_a, int size)
 {
-	int	i;
+	t_stack	*ptr;
+	t_stack	*big;
+	int		value;
 
-	i = 0;
-	if (ft_sign(av[i]))
-		i++;
-	while (av[i] && av[i] == '0')
-		i++;
-	if (av[i] != '\0')
-		return (0);
-	return (1);
+	while (--size > 0)
+	{
+		big = NULL;
+		value = INT_MIN;
+		ptr = stack_a;
+		while (ptr)
+		{
+			if (ptr->data == INT_MIN && ptr->index == 0)
+				ptr->index = 1;
+			if (ptr->data > value && ptr->index == 0)
+			{
+				value = ptr->data;
+				big = ptr;
+				ptr = ptr->next;
+			}
+			else
+				ptr = ptr->next;
+		}
+		if (big != NULL)
+			big->index = size;
+	}
 }
 
-// check if the arguments are all numbers and not duplicated
-int	check_correct_input(char **av)
+void	ft_norm(char **av)
 {
 	int	i;
-	int	nb_zero;
+	int	j;
 
-	nb_zero = 0;
 	i = 1;
+	j = 0;
 	while (av[i])
 	{
-		if (!check_number(av[i]))
-			return (0);
-		nb_zero += check_is_zero(av[i]);
+		while (av[i][j] && av[i][j] == ' ')
+			j++;
+		if (av[i][j] == '\0')
+		{
+			write(2, "Error\n", 6);
+			exit (1);
+		}
 		i++;
 	}
-	if (nb_zero > 1)
-		return (0);
-	if (check_dup(av))
-		return (0);
-	return (1);
 }
+
+	//int		j;
+
+	//j = 0;
+	//stack_b = NULL;
+	//stack_a = NULL;
+	//while (av[i])
+	//{
+	//	while (av[i][j] && av[i][j] == ' ')
+	//		j++;
+	//	if (av[i][j] == '\0')
+	//	{
+	//		write(2, "Error\n", 6);
+	//		exit (1);
+	//	}
+	//	i++;
+	//}
