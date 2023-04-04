@@ -6,32 +6,39 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:33:50 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/26 02:54:43 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/03/31 15:06:12 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	ft_abs(int nb)
+{
+	if (nb < 0)
+		return (nb * -1);
+	return (nb);
+}
+
 void	cost(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*tmp_a;
-	t_stack	*tmp_b;
+	t_stack	*a;
+	t_stack	*b;
 	int		size_a;
 	int		size_b;
 
-	tmp_a = *stack_a;
-	tmp_b = *stack_b;
-	size_a = get_stack_size(tmp_a);
-	size_b = get_stack_size(tmp_b);
-	while (tmp_b)
+	a = *stack_a;
+	b = *stack_b;
+	size_a = sizeof_stack(a);
+	size_b = sizeof_stack(b);
+	while (b)
 	{
-		tmp_b->cost_b = tmp_b->position;
-		if (tmp_b->position > size_b / 2)
-			tmp_b->cost_b = (size_b - tmp_b->position) * -1;
-		tmp_b->cost_a = tmp_b->tar_position;
-		if (tmp_b->tar_position > size_a / 2)
-			tmp_b->cost_a = (size_a - tmp_b->tar_position) * -1;
-		tmp_b = tmp_b->next;
+		b->cost_b = b->position;
+		if (b->position > size_b / 2)
+			b->cost_b = (size_b - b->position) * -1;
+		b->cost_a = b->tar_position;
+		if (b->tar_position > size_a / 2)
+			b->cost_a = (size_a - b->tar_position) * -1;
+		b = b->next;
 	}
 }
 
@@ -46,9 +53,9 @@ void	reduce_moves(t_stack **stack_a, t_stack **stack_b)
 	cheapest = INT_MAX;
 	while (tmp)
 	{
-		if (abs(tmp->cost_a) + abs(tmp->cost_b) < cheapest)
+		if (ft_abs(tmp->cost_a) + ft_abs(tmp->cost_b) < cheapest)
 		{
-			cheapest = abs(tmp->cost_a) + abs(tmp->cost_b);
+			cheapest = ft_abs(tmp->cost_a) + ft_abs(tmp->cost_b);
 			cost_a = tmp->cost_a;
 			cost_b = tmp->cost_b;
 		}

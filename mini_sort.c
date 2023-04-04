@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:41:48 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/26 14:48:02 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/03/27 15:30:07 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	sort_three(t_stack **stack)
 		return ;
 	biggest = biggest_index(*stack);
 	if ((*stack)->index == biggest)
-		do_ra(stack);
+		rotate_a(stack);
 	else if ((*stack)->next->index == biggest)
-		do_rra(stack);
+		reverse_rotate_a(stack);
 	if ((*stack)->index > (*stack)->next->index)
-		do_sa(stack);
+		swap_a(stack);
 }

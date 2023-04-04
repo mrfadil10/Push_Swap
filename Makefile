@@ -6,15 +6,15 @@
 #    By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 16:38:37 by mfadil            #+#    #+#              #
-#    Updated: 2023/03/26 20:55:03 by mfadil           ###   ########.fr        #
+#    Updated: 2023/03/30 17:15:18 by mfadil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-CFLAGS = -g -Wall -Wextra -Werror
-NAME = push_swap
-#S_PATH = src/
-O_PATH = obj/
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror
+NAME	= push_swap
+B_NAME	= checker
+O_PATH	= obj/
 
 SRC =	check_input.c \
 		ft_moves.c \
@@ -23,22 +23,37 @@ SRC =	check_input.c \
 		mini_sort.c \
 		push_swap_utils.c \
 		push_swap.c \
-		push.c \
 		reduce_moves.c \
-		rev_rotate.c \
-		rotate.c \
 		split_strs.c \
 		stack.c \
-		swap.c \
-		lib1.c
+		libc.c \
+		../instructions/push.c \
+		../instructions/rev_rotate.c \
+		../instructions/rotate.c \
+		../instructions/swap.c
 
-OBJ		= 	$(SRC:.c=.o)
-SRCS	= $(addprefix $(S_PATH), $(SRC))
-OBJS	= $(addprefix $(O_PATH), $(OBJ))
+B_SRC = check_lst.c \
+		check_push.c \
+		check_rotate.c \
+		check_rev_rotate.c \
+		check_swap.c \
+		checker_main.c \
+		get_next_line.c \
+		get_next_line_utils.c \
+		libc_check.c \
+		split_strs.c
+
+OBJ		=	$(SRC:.c=.o)
+B_OBJ	=	$(B_SRC:.c=.o)
+
+OBJS	=	$(addprefix $(O_PATH), $(OBJ))
+B_OBJS	=	$(addprefix $(O_PATH), $(B_OBJ))
 
 all: $(O_PATH) $(NAME)
 
-$(O_PATH)%.o: %.c
+bonus: $(O_PATH) $(B_NAME)
+
+$(O_PATH)%.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(O_PATH):
@@ -47,12 +62,18 @@ $(O_PATH):
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
+$(B_NAME): $(B_OBJS)
+	$(CC) $(CFLAGS) $(B_OBJS) -o $(B_NAME)
+
 clean:
 	rm -rf $(O_PATH)
+	rm -rf ./instructions/*.o
+	rm -rf *.o
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(B_NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

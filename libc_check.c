@@ -1,37 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   libc_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 16:54:57 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/30 17:16:49 by mfadil           ###   ########.fr       */
+/*   Created: 2023/03/28 17:23:01 by mfadil            #+#    #+#             */
+/*   Updated: 2023/03/30 18:03:32 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_putstr(char *str)
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+	}
+	return (lst);
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
+
+	if (!new || !lst)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = ft_lstlast(*lst);
+	last->next = new;
+}
+
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] && s2[i])
 	{
-		write(1, &str[i], 1);
+		if (s1[i] != s2[i])
+			return (0);
 		i++;
 	}
-}
-
-void	error_exit(t_stack **a, t_stack **b)
-{
-	if (a == NULL || *a != NULL)
-		free_stack(a);
-	if (b == NULL || *b != NULL)
-		free_stack(b);
-	write(2, "Error\n", 6);
-	exit (1);
+	return (1);
 }
 
 int	ft_isdigit(char c)

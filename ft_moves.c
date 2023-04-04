@@ -6,61 +6,61 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:31:47 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/26 02:54:25 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/03/27 15:28:05 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	reverse_all(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
+static void	do_reverse_all(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
 	while (*cost_a < 0 && *cost_b < 0)
 	{
 		(*cost_a)++;
 		(*cost_b)++;
-		do_rrr(a, b);
+		reverse_rotate_all(a, b);
 	}
 }
 
-static void	rotate_all(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
+static void	do_rotate_all(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
 	while (*cost_a > 0 && *cost_b > 0)
 	{
 		(*cost_a)--;
 		(*cost_b)--;
-		do_rr(a, b);
+		rotate_all(a, b);
 	}
 }
 
-static void	rotate_a(t_stack **a, int *cost)
+static void	do_rotate_a(t_stack **a, int *cost)
 {
 	while (*cost)
 	{
 		if (*cost > 0)
 		{
-			do_ra(a);
+			rotate_a(a);
 			(*cost)--;
 		}
 		else if (*cost < 0)
 		{
-			do_rra(a);
+			reverse_rotate_a(a);
 			(*cost)++;
 		}
 	}
 }
 
-static void	rotate_b(t_stack **b, int *cost)
+static void	do_rotate_b(t_stack **b, int *cost)
 {
 	while (*cost)
 	{
 		if (*cost > 0)
 		{
-			do_rb(b);
+			rotate_b(b);
 			(*cost)--;
 		}
 		else if (*cost < 0)
 		{
-			do_rrb(b);
+			reverse_rotate_b(b);
 			(*cost)++;
 		}
 	}
@@ -69,10 +69,10 @@ static void	rotate_b(t_stack **b, int *cost)
 void	do_best_move(t_stack **a, t_stack **b, int cost_a, int cost_b)
 {
 	if (cost_a < 0 && cost_b < 0)
-		reverse_all(a, b, &cost_a, &cost_b);
+		do_reverse_all(a, b, &cost_a, &cost_b);
 	else if (cost_a > 0 && cost_b > 0)
-		rotate_all(a, b, &cost_a, &cost_b);
-	rotate_a(a, &cost_a);
-	rotate_b(b, &cost_b);
+		do_rotate_all(a, b, &cost_a, &cost_b);
+	do_rotate_a(a, &cost_a);
+	do_rotate_b(b, &cost_b);
 	push_to_a(a, b);
 }
