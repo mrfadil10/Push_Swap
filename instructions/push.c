@@ -6,21 +6,21 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:28:20 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/30 16:52:04 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/08 01:01:59 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	push(t_stack **src, t_stack **dst)
+static void	push(t_stack **src, t_stack **dest)
 {
 	t_stack	*tmp;
 
 	if (*src == NULL)
 		return ;
 	tmp = (*src)->next;
-	(*src)->next = *dst;
-	*dst = *src;
+	(*src)->next = *dest;
+	*dest = *src;
 	*src = tmp;
 }
 

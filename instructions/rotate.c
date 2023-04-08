@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 23:30:20 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/27 16:30:50 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/08 01:05:08 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static void	rotate(t_stack **stack)
 {
-	t_stack	*tmp;
 	t_stack	*tail;
+	t_stack	*tmp;
 
 	tmp = *stack;
 	*stack = (*stack)->next;
-	tail = get_bottom(*stack);
+	tail = get_last_element(*stack);
 	tmp->next = NULL;
 	tail->next = tmp;
 }

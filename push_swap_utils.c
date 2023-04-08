@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:54:57 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/30 17:16:49 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/07 22:26:32 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-void	error_exit(t_stack **a, t_stack **b)
+void	is_error(t_stack **a, t_stack **b)
 {
 	if (a == NULL || *a != NULL)
 		free_stack(a);

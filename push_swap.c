@@ -6,51 +6,54 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 23:07:53 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/30 16:32:15 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/08 00:54:23 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_init(t_stack **stack_a, t_stack **stack_b)
+static void	keep_three(t_stack **a, t_stack **b)
 {
-	int	stack_size;
-	int	pushes;
+	int	size;
+	int	pushed;
 	int	i;
 
-	stack_size = sizeof_stack(*stack_a);
-	pushes = 0;
+	size = sizeof_stack(*a);
+	pushed = 0;
 	i = 0;
-	while (stack_size > 6 && i < stack_size && pushes < stack_size / 2)
+	while (size > 6 && i < size && pushed < size / 2)
 	{
-		if ((*stack_a)->index <= stack_size / 2)
+		if ((*a)->index <= size / 2)
 		{
-			push_to_b(stack_a, stack_b);
-			pushes++;
+			push_to_b(a, b);
+			pushed++;
 		}
 		else
-			rotate_a(stack_a);
+			rotate_a(a);
 		i++;
 	}
-	while (stack_size - pushes > 3)
+	while (size - pushed > 3)
 	{
-		push_to_b(stack_a, stack_b);
-		pushes++;
+		push_to_b(a, b);
+		pushed++;
 	}
 }
 
-static void	sort_stack(t_stack **stack_a)
+//pushed in line 38 can be deleted
+// i in line 33
+
+static void	sort_stack(t_stack **a)
 {
 	int	lowest_p;
-	int	stack_size;
+	int	size;
 
-	stack_size = sizeof_stack(*stack_a);
-	lowest_p = position_lowest_index(stack_a);
-	if (lowest_p > stack_size / 2)
+	size = sizeof_stack(*a);
+	lowest_p = low_index_position(a);
+	if (lowest_p > size / 2)
 	{
-		while (lowest_p < stack_size)
+		while (lowest_p < size)
 		{
-			reverse_rotate_a(stack_a);
+			reverse_rotate_a(a);
 			lowest_p++;
 		}
 	}
@@ -58,22 +61,32 @@ static void	sort_stack(t_stack **stack_a)
 	{
 		while (lowest_p > 0)
 		{
-			rotate_a(stack_a);
+			rotate_a(a);
 			lowest_p--;
 		}
 	}
 }
 
-void	sort(t_stack **stack_a, t_stack **stack_b)
+void	ft_sort(t_stack **a, t_stack **b)
 {
-	push_init(stack_a, stack_b);
-	sort_three(stack_a);
-	while (*stack_b)
+	keep_three(a, b);
+	mini_sort(a);
+	while (*b)
 	{
-		get_target_position(stack_a, stack_b);
-		cost(stack_a, stack_b);
-		reduce_moves(stack_a, stack_b);
+		get_target_position(a, b);
+		get_cost(a, b);
+		reduce_moves(a, b);
 	}
-	if (!is_sorted(*stack_a))
-		sort_stack(stack_a);
+	if (!stack_sort_check(*a))
+		sort_stack(a);
+}
+
+void	push_swap(t_stack **a, t_stack **b, int size)
+{
+	if (size == 2 && !stack_sort_check(*a))
+		swap_a(a);
+	else if (size == 3)
+		mini_sort(a);
+	else if (size > 3 && !stack_sort_check(*a))
+		ft_sort(a, b);
 }

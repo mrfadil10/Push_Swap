@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 23:18:16 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/26 21:35:00 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/08 02:21:19 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ long	check_input(char *av)
 	return (1);
 }
 
-int	check_dup(t_stack *column)
+int	check_dup(t_stack *stack)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	tmp = column;
+	tmp = stack;
 	while (tmp)
 	{
 		tmp2 = tmp->next;
@@ -46,35 +46,6 @@ int	check_dup(t_stack *column)
 		tmp = tmp->next;
 	}
 	return (0);
-}
-
-void	get_index(t_stack *stack_a, int size)
-{
-	t_stack	*ptr;
-	t_stack	*big;
-	int		value;
-
-	while (--size > 0)
-	{
-		big = NULL;
-		value = INT_MIN;
-		ptr = stack_a;
-		while (ptr)
-		{
-			if (ptr->data == INT_MIN && ptr->index == 0)
-				ptr->index = 1;
-			if (ptr->data > value && ptr->index == 0)
-			{
-				value = ptr->data;
-				big = ptr;
-				ptr = ptr->next;
-			}
-			else
-				ptr = ptr->next;
-		}
-		if (big != NULL)
-			big->index = size;
-	}
 }
 
 void	ft_norm(char **av)
@@ -97,19 +68,31 @@ void	ft_norm(char **av)
 	}
 }
 
-	//int		j;
+void	put_idx(t_stack *stack_a, int size)
+{
+	int		value;
+	t_stack	*ptr;
+	t_stack	*big;
 
-	//j = 0;
-	//stack_b = NULL;
-	//stack_a = NULL;
-	//while (av[i])
-	//{
-	//	while (av[i][j] && av[i][j] == ' ')
-	//		j++;
-	//	if (av[i][j] == '\0')
-	//	{
-	//		write(2, "Error\n", 6);
-	//		exit (1);
-	//	}
-	//	i++;
-	//}
+	while (--size > 0)
+	{
+		value = INT_MIN;
+		ptr = stack_a;
+		big = NULL;
+		while (ptr)
+		{
+			if (ptr->data == INT_MIN && ptr->index == 0)
+				ptr->index = 1;
+			if (ptr->data > value && ptr->index == 0)
+			{
+				value = ptr->data;
+				big = ptr;
+				ptr = ptr->next;
+			}
+			else
+				ptr = ptr->next;
+		}
+		if (big != NULL)
+			big->index = size;
+	}
+}

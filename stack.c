@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:13:21 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/30 16:30:33 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/06 23:54:40 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ t_stack	*stack_new(int value)
 	return (new);
 }
 
-/*	Adds an element to the bottom of a stack. */
-
-void	stack_add(t_stack **stack, t_stack *new)
+void	add_to_bottom(t_stack **stack, t_stack *new)
 {
 	t_stack	*bottom;
 
@@ -42,29 +40,23 @@ void	stack_add(t_stack **stack, t_stack *new)
 		*stack = new;
 		return ;
 	}
-	bottom = get_bottom(*stack);
+	bottom = get_last_element(*stack);
 	bottom->next = new;
 }
 
-/*	Returns the last element of the stack. */
-
-t_stack	*get_bottom(t_stack *stack)
+t_stack	*get_last_element(t_stack *stack)
 {
 	while (stack && stack->next != NULL)
 		stack = stack->next;
 	return (stack);
 }
 
-/* Returns de element before the bottom element */
-
-t_stack	*before_bottom(t_stack *stack)
+t_stack	*get_before_last(t_stack *stack)
 {
 	while (stack && stack->next->next != NULL)
 		stack = stack->next;
 	return (stack);
 }
-
-/*	Returns the number of elements in a stack. */
 
 int	sizeof_stack(t_stack *stack)
 {

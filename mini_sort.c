@@ -6,68 +6,36 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:41:48 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/27 15:30:07 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/07 21:42:19 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//static int	biggest_index(t_stack *stack)
-//{
-//	int	index;
-
-//	index = stack->index;
-//	while (stack)
-//	{
-//		if (stack->index > index)
-//			index = stack->index;
-//		stack = stack->next;
-//	}
-//	return (index);
-//}
-
-//void	mini_sort(t_stack **stack)
-//{
-//	int	big;
-
-//	if (check_sort(*stack))
-//		return ;
-//	big = biggest_index(*stack);
-//	if ((*stack)->index == big)
-//		rotate_a(stack);
-//	else if ((*stack)->next->index == big)
-//		rev_rotate_a(stack);
-//	if ((*stack)->index > (*stack)->next->index)
-//		swap_a(stack);
-//}
-
-static int	biggest_index(t_stack *stack)
+static int	get_highest_index(t_stack *stack)
 {
-	int	index;
+	int	i;
 
-	index = stack->index;
+	i = stack->index;
 	while (stack)
 	{
-		if (stack->index > index)
-			index = stack->index;
+		if (stack->index > i)
+			i = stack->index;
 		stack = stack->next;
 	}
-	return (index);
+	return (i);
 }
 
-/*	Sorts a stack of 3 numbers in 2 or fewer moves. The sorting is done by index
-	rather than value. */
-
-void	sort_three(t_stack **stack)
+void	mini_sort(t_stack **stack)
 {
-	int	biggest;
+	int	big;
 
-	if (is_sorted(*stack))
+	if (stack_sort_check(*stack))
 		return ;
-	biggest = biggest_index(*stack);
-	if ((*stack)->index == biggest)
+	big = get_highest_index(*stack);
+	if ((*stack)->index == big)
 		rotate_a(stack);
-	else if ((*stack)->next->index == biggest)
+	else if ((*stack)->next->index == big)
 		reverse_rotate_a(stack);
 	if ((*stack)->index > (*stack)->next->index)
 		swap_a(stack);
