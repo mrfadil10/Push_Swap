@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 01:12:07 by mfadil            #+#    #+#             */
-/*   Updated: 2023/04/04 02:51:22 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/08 18:31:25 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 void	check_pa(t_list **b, t_list **a)
 {
-	t_list	*tmp;
+	t_list	*var;
 
 	if (*b == NULL)
 		return ;
-	tmp = *b;
+	var = *b;
 	*b = (*b)->next;
-	tmp->next = *a;
-	*a = tmp;
+	var->next = *a;
+	*a = var;
 	return ;
 }
 
 void	check_pb(t_list **a, t_list **b)
 {
-	t_list	*tmp;
+	t_list	*var;
 
 	if (*a == NULL)
 		return ;
-	tmp = *a;
+	var = *a;
 	*a = (*a)->next;
-	tmp->next = *b;
-	*b = tmp;
+	var->next = *b;
+	*b = var;
 	return ;
 }
 

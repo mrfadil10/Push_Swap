@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 03:48:05 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/28 16:49:34 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/08 18:32:56 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	check_rra(t_list **a)
 
 	tmp = *a;
 	last = *a;
-	while (last->next != NULL)
+	while (last->next)
 	{
 		tmp = last;
 		last = last->next;
@@ -36,7 +36,7 @@ void	check_rrb(t_list **b)
 
 	tmp = *b;
 	last = *b;
-	while (last->next != NULL)
+	while (last->next)
 	{
 		tmp = last;
 		last = last->next;
@@ -53,7 +53,7 @@ void	check_rrr(t_list **a, t_list **b)
 
 	tmp = *a;
 	last = *a;
-	while (last->next != NULL)
+	while (last->next)
 	{
 		tmp = last;
 		last = last->next;
@@ -63,7 +63,7 @@ void	check_rrr(t_list **a, t_list **b)
 	tmp->next = NULL;
 	tmp = *b;
 	last = *b;
-	while (last->next != NULL)
+	while (last->next)
 	{
 		tmp = last;
 		last = last->next;

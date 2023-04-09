@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:41:40 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/30 17:20:55 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/09 02:20:32 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	exec_sort(t_list **stack_a, t_list **stack_b, char *str)
 
 void	check_sort(t_list *a)
 {
-	while (a->next != NULL)
+	while (a->next)
 	{
-		if (a->content > (a->next)->content)
+		if (a->content > a->next->content)
 		{
 			write(1, "KO\n", 3);
 			return ;
@@ -73,12 +73,12 @@ void	check_av(int ac, char **av, t_list **a)
 	int		size;
 	char	**ag;
 
-	ag = NULL;
 	size = 0;
+	ag = NULL;
 	if (ac == 2)
 	{
 		ag = ft_split(av[1], ' ');
-		while (ag[size] != NULL)
+		while (ag[size])
 			size++;
 		check_write_lst(a, size, ag, 0);
 		free(ag);
@@ -87,16 +87,16 @@ void	check_av(int ac, char **av, t_list **a)
 		check_write_lst(a, ac, av, 1);
 }
 
-int	main(int ac, char *av[])
+int	main(int ac, char **av)
 {
 	int		size;
 	char	*str;
 	t_list	*a;
 	t_list	*b;
 
+	size = 0;
 	a = NULL;
 	b = NULL;
-	size = 0;
 	if (ac < 2)
 		return (0);
 	else

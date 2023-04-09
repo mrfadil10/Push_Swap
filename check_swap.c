@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 01:45:10 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/28 02:05:23 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/08 15:45:40 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,46 @@
 
 void	check_sa(t_list **a)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_list	*var1;
+	t_list	*var2;
 
-	tmp = *a;
-	tmp2 = tmp->next;
-	*a = tmp2;
-	tmp->next = tmp2->next;
-	tmp2->next = tmp;
+	var1 = *a;
+	var2 = var1->next;
+	*a = var2;
+	var1->next = var2->next;
+	var2->next = var1;
 	return ;
 }
 
 void	check_sb(t_list **b)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_list	*var1;
+	t_list	*var2;
 
-	tmp = *b;
-	tmp2 = tmp->next;
-	*b = tmp2;
-	tmp->next = tmp2->next;
-	tmp2->next = tmp;
+	var1 = *b;
+	var2 = var1->next;
+	*b = var2;
+	var1->next = var2->next;
+	var2->next = var1;
 	return ;
 }
 
 void	check_ss(t_list **a, t_list **b)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_list	*var1;
+	t_list	*var2;
 
-	tmp = *a;
-	tmp2 = tmp->next;
-	*a = tmp2;
-	tmp->next = tmp2->next;
-	tmp2->next = tmp;
-	tmp = NULL;
-	tmp2 = NULL;
-	tmp = *b;
-	tmp2 = tmp->next;
-	*b = tmp2;
-	tmp->next = tmp2->next;
-	tmp2->next = tmp;
+	var1 = *a;
+	var2 = var1->next;
+	*a = var2;
+	var1->next = var2->next;
+	var2->next = var1;
+	var1 = NULL;
+	var2 = NULL;
+	var1 = *b;
+	var2 = var1->next;
+	*b = var2;
+	var1->next = var2->next;
+	var2->next = var1;
 	return ;
 }

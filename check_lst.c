@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:18:47 by mfadil            #+#    #+#             */
-/*   Updated: 2023/03/30 18:03:41 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/08 17:41:13 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_list	*ft_lstnew(int content)
 
 void	lst_check_c(t_list *a, int check)
 {
-	while (a->next != NULL)
+	while (a->next)
 	{
 		if (a->content == check)
 		{
@@ -40,34 +40,34 @@ void	lst_check_c(t_list *a, int check)
 
 void	lst_order(t_list **a)
 {
-	t_list	*tmp1;
-	t_list	*tmp2;
+	t_list	*var1;
+	t_list	*var2;
 
-	tmp1 = *a;
-	tmp2 = tmp1->next;
-	while (tmp2 != NULL)
+	var1 = *a;
+	var2 = var1->next;
+	while (var2)
 	{
-		if (tmp1->content > tmp2->content)
+		if (var1->content > var2->content)
 			return ;
-		tmp1 = tmp1->next;
-		tmp2 = tmp2->next;
+		var1 = var1->next;
+		var2 = var2->next;
 	}
 	exit (0);
 }
 
 void	check_lst_inverted(t_list **a)
 {
-	t_list	*tmp1;
-	t_list	*tmp2;
+	t_list	*var1;
+	t_list	*var2;
 
-	tmp1 = *a;
-	tmp2 = tmp1->next;
-	while (tmp2 != NULL)
+	var1 = *a;
+	var2 = var1->next;
+	while (var2)
 	{
-		if (tmp1->content < tmp2->content)
+		if (var1->content < var2->content)
 			return ;
-		tmp1 = tmp1->next;
-		tmp2 = tmp2->next;
+		var1 = var1->next;
+		var2 = var2->next;
 	}
 	check_sa(a);
 	return ;
