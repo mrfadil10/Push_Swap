@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:28:20 by mfadil            #+#    #+#             */
-/*   Updated: 2023/04/10 15:47:51 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/10 23:31:51 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static void	push(t_stack **src, t_stack **dest)
 {
-	t_stack	*tmp;
+	t_stack	*var;
 
 	if (*src == NULL)
 		return ;
-	tmp = (*src)->next;
+	var = (*src)->next;
 	(*src)->next = *dest;
 	*dest = *src;
-	*src = tmp;
+	*src = var;
 }
 
-void	push_to_a(t_stack **stack_a, t_stack **stack_b)
+void	push_to_a(t_stack **a, t_stack **b)
 {
-	push(stack_b, stack_a);
+	push(b, a);
 	ft_putstr("pa\n");
 }
 
-void	push_to_b(t_stack **stack_a, t_stack **stack_b)
+void	push_to_b(t_stack **a, t_stack **b)
 {
-	push(stack_a, stack_b);
+	push(a, b);
 	ft_putstr("pb\n");
 }

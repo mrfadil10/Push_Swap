@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:03:45 by mfadil            #+#    #+#             */
-/*   Updated: 2023/04/08 01:03:49 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/10 23:34:24 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 
 static void	rev_rotate(t_stack **stack)
 {
-	t_stack	*tmp;
-	t_stack	*tail;
+	t_stack	*var;
 	t_stack	*new;
+	t_stack	*tail;
 
 	tail = get_last_element(*stack);
 	new = get_before_last(*stack);
-	tmp = *stack;
+	var = *stack;
 	*stack = tail;
-	(*stack)->next = tmp;
+	(*stack)->next = var;
 	new->next = NULL;
 }
 
-void	reverse_rotate_a(t_stack **stack_a)
+void	reverse_rotate_a(t_stack **a)
 {
-	rev_rotate(stack_a);
+	rev_rotate(a);
 	ft_putstr("rra\n");
 }
 
-void	reverse_rotate_b(t_stack **stack_b)
+void	reverse_rotate_b(t_stack **b)
 {
-	rev_rotate(stack_b);
+	rev_rotate(b);
 	ft_putstr("rrb\n");
 }
 
-void	reverse_rotate_all(t_stack **stack_a, t_stack **stack_b)
+void	reverse_rotate_all(t_stack **a, t_stack **b)
 {
-	rev_rotate(stack_a);
-	rev_rotate(stack_b);
+	rev_rotate(a);
+	rev_rotate(b);
 	ft_putstr("rrr\n");
 }

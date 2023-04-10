@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 23:07:53 by mfadil            #+#    #+#             */
-/*   Updated: 2023/04/10 14:02:28 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/10 23:37:06 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	keep_three(t_stack **a, t_stack **b)
 	int	pushed;
 	int	i;
 
-	size = sizeof_stack(*a);
-	pushed = 0;
 	i = 0;
+	pushed = 0;
+	size = sizeof_stack(*a);
 	while (size > 6 && i++ < size && pushed < size / 2)
 	{
 		if ((*a)->index <= size / 2)
