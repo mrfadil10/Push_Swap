@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:41:40 by mfadil            #+#    #+#             */
-/*   Updated: 2023/04/09 02:20:32 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/10 21:47:55 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	exec_rrr(t_list **stack_a, t_list **stack_b, char *str)
 
 void	exec_sort(t_list **stack_a, t_list **stack_b, char *str)
 {
-	while (str != NULL)
+	while (str)
 	{
 		if (ft_strcmp(str, "sa\n"))
 			check_sa(stack_a);
@@ -57,7 +57,7 @@ void	check_sort(t_list *a)
 {
 	while (a->next)
 	{
-		if (a->content > a->next->content)
+		if (a->content > (a->next)->content)
 		{
 			write(1, "KO\n", 3);
 			return ;

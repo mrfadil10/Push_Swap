@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:39:02 by mfadil            #+#    #+#             */
-/*   Updated: 2023/04/07 18:30:50 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/09 22:15:02 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,48 +49,48 @@ int	low_index_position(t_stack **stack)
 	return (lowest_p);
 }
 
-static int	get_best_target(t_stack **a, int index_b, int target_i, int target)
+static int	get_best_target(t_stack **a, int idx_b, int target_i, int target)
 {
-	t_stack	*tmp;
+	t_stack	*stack;
 
-	tmp = *a;
-	while (tmp)
+	stack = *a;
+	while (stack)
 	{
-		if (tmp->index > index_b && tmp->index < target_i)
+		if (stack->index > idx_b && stack->index < target_i)
 		{
-			target_i = tmp->index;
-			target = tmp->position;
+			target_i = stack->index;
+			target = stack->position;
 		}
-		tmp = tmp->next;
+		stack = stack->next;
 	}
 	if (target_i != INT_MAX)
 		return (target);
-	tmp = *a;
-	while (tmp)
+	stack = *a;
+	while (stack)
 	{
-		if (tmp->index < target_i)
+		if (stack->index < target_i)
 		{
-			target_i = tmp->index;
-			target = tmp->position;
+			target_i = stack->index;
+			target = stack->position;
 		}
-		tmp = tmp->next;
+		stack = stack->next;
 	}
 	return (target);
 }
 
 void	get_target_position(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*tmp;
 	int		target;
+	t_stack	*temp;
 
-	tmp = *stack_b;
+	temp = *stack_b;
 	num_position(stack_a);
 	num_position(stack_b);
 	target = 0;
-	while (tmp)
+	while (temp)
 	{
-		target = get_best_target(stack_a, tmp->index, INT_MAX, target);
-		tmp->tar_position = target;
-		tmp = tmp->next;
+		target = get_best_target(stack_a, temp->index, INT_MAX, target);
+		temp->tar_position = target;
+		temp = temp->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:29:01 by mfadil            #+#    #+#             */
-/*   Updated: 2023/04/08 00:54:31 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/10 16:07:19 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void		lst_order(t_list **a);
 void		check_lst_inverted(t_list **a);
 void		check_write_lst(t_list **a, int ac, char **av, int i);
 
+int			ft_lstsize(t_list *lst);
 t_list		*ft_lstnew(int content);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 int			ft_strcmp(char *s1, char *s2);

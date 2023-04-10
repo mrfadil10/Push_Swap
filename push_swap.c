@@ -6,7 +6,7 @@
 /*   By: mfadil <mfadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 23:07:53 by mfadil            #+#    #+#             */
-/*   Updated: 2023/04/08 00:54:23 by mfadil           ###   ########.fr       */
+/*   Updated: 2023/04/10 14:02:28 by mfadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	keep_three(t_stack **a, t_stack **b)
 	size = sizeof_stack(*a);
 	pushed = 0;
 	i = 0;
-	while (size > 6 && i < size && pushed < size / 2)
+	while (size > 6 && i++ < size && pushed < size / 2)
 	{
 		if ((*a)->index <= size / 2)
 		{
@@ -30,17 +30,10 @@ static void	keep_three(t_stack **a, t_stack **b)
 		}
 		else
 			rotate_a(a);
-		i++;
 	}
-	while (size - pushed > 3)
-	{
+	while (size - pushed++ > 3)
 		push_to_b(a, b);
-		pushed++;
-	}
 }
-
-//pushed in line 38 can be deleted
-// i in line 33
 
 static void	sort_stack(t_stack **a)
 {
@@ -51,19 +44,13 @@ static void	sort_stack(t_stack **a)
 	lowest_p = low_index_position(a);
 	if (lowest_p > size / 2)
 	{
-		while (lowest_p < size)
-		{
+		while (lowest_p++ < size)
 			reverse_rotate_a(a);
-			lowest_p++;
-		}
 	}
 	else
 	{
-		while (lowest_p > 0)
-		{
+		while (lowest_p-- > 0)
 			rotate_a(a);
-			lowest_p--;
-		}
 	}
 }
 
